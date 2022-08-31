@@ -1,0 +1,23 @@
+/*************************** start of  smaller screen*******************/
+
+@media only screen and (max-width: 918px) {}
+
+
+/** ********************end of smaller screen********************** **/
+
+.centered-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+button,
+input,
+textarea {
+    outline: none !important;
+}
+
+* {
+    font-size: 13px;
+}
