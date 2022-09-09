@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
   $subject = $_POST['subject'];
   $message = $_POST['message'] . " -- from " . $email;
 
-  $to = 'support@burasolutions.com';
+  $to = $admin->getDetail($admin->admin_id, "email");
   $from = $email;
 
   // Sending email
@@ -49,6 +49,7 @@ if (isset($_POST['submit'])) {
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/root.css" rel="stylesheet">
 
 
 </head>
@@ -91,7 +92,7 @@ if (isset($_POST['submit'])) {
             <div class="info-box mb-4">
               <i class="bx bx-map"></i>
               <h3>Our Address</h3>
-              <p>Boston, Massachusetts, U.S.</p>
+              <p>Amstelplein 1, floor #9, 1096 HA, Netherlands.</p>
             </div>
           </div>
 

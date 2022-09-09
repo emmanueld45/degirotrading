@@ -19,8 +19,18 @@ if (isset($_POST['submit'])) {
     $coin_type = mysqli_real_escape_string($db->conn, $_POST['coin_type']);
     $wallet_address = mysqli_real_escape_string($db->conn, $_POST['wallet_address']);
 
+    // $transaction_slip = mysqli_real_escape_string($db->conn, $_POST['transaction_slip']);
+    $from_wallet_address = mysqli_real_escape_string($db->conn, $_POST['from_wallet_address']);
+
+    $id = uniqid();
+    $filename = $_FILES["image"]["name"];
+    $tempname = $_FILES["image"]["tmp_name"];
+    $folder = "../transaction-slips/" . $id . $filename;
+    $transaction_slip = $id . $filename;
+    $uploaded = move_uploaded_file($tempname, $folder);
+
     $deposit_id = uniqid();
-    $result = $user->addDeposit($deposit_id, $session_id, "Deposit", $amount, $coin_type, $wallet_address);
+    $result = $user->addDeposit($deposit_id, $session_id, "Deposit", $amount, $coin_type, $wallet_address, $transaction_slip, $from_wallet_address);
     $user->updateDetail($session_id, "pending_deposit", $amount, "+");
     $txn_ref = RAND(10000, 100000);
     $email_class->sendDepositEmail($session_id, $coin_type, $amount, $wallet_address, $txn_ref);
@@ -78,7 +88,7 @@ if (isset($_POST['submit'])) {
 
 
 
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <div class="row">
 
                             <!-- Area Chart -->
@@ -126,6 +136,13 @@ if (isset($_POST['submit'])) {
                                         <div class="coin-address-text" style="width:100%;text-align:center;margin-bottom:10px;color:#106eea;font-size:14px;font-weight:bold;">
                                             dksjhdjshdshdkjsdhkjshdkjhkjshkjahsjhk
                                         </div>
+
+                                        <label>Translip slip</label>
+                                        <input type="file" class="form-control mb-3" name="image" required>
+
+                                        <label>Sent from:</label>
+                                        <input type="text" class="form-control mb-3" placeholder="Enter Wallet Address" name="from_wallet_address" required>
+
                                         <button class="btn btn-primary mb-3" style="width:100%;" name="submit">Request Deposit</button>
 
                                     </div>

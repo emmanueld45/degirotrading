@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2022 at 02:16 PM
+-- Generation Time: Sep 09, 2022 at 01:57 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -61,6 +61,8 @@ CREATE TABLE `deposits` (
   `coin_type` varchar(500) NOT NULL,
   `wallet_address` varchar(500) NOT NULL,
   `usd_amount` varchar(500) NOT NULL,
+  `transaction_slip` varchar(500) NOT NULL,
+  `from_wallet_address` varchar(500) NOT NULL,
   `status` varchar(500) NOT NULL,
   `time` varchar(500) NOT NULL,
   `time_created` varchar(500) NOT NULL
@@ -70,11 +72,13 @@ CREATE TABLE `deposits` (
 -- Dumping data for table `deposits`
 --
 
-INSERT INTO `deposits` (`id`, `deposit_id`, `user_id`, `deposit_type`, `coin_type`, `wallet_address`, `usd_amount`, `status`, `time`, `time_created`) VALUES
-(16, '62c3d8397b96a', '62c3bfdf011a5', 'Deposit', 'USDT', 'sasagshnf,,f', '120', 'Approved', '1657002041', 'Jul,05,2022 08:20 AM'),
-(18, '62cd40a00d940', '62c3bfdf011a5', 'Topup', 'ETH', 'hdnsldsdbsndsdsd', '3000', 'Pending', '1657618592', 'Jul,12,2022 11:36 AM'),
-(19, '62cff16d408be', '62cd92a40b7a2', 'Deposit', 'USDT', 'sasagshnf,,fffff', '15000', 'Pending', '1657794925', 'Jul,14,2022 12:35 PM'),
-(20, '62cff26ac862b', '62cd92a40b7a2', 'Topup', 'BTC', 'fjwlkwebwebwqke', '2000', 'Pending', '1657795178', 'Jul,14,2022 12:39 PM');
+INSERT INTO `deposits` (`id`, `deposit_id`, `user_id`, `deposit_type`, `coin_type`, `wallet_address`, `usd_amount`, `transaction_slip`, `from_wallet_address`, `status`, `time`, `time_created`) VALUES
+(16, '62c3d8397b96a', '62c3bfdf011a5', 'Deposit', 'USDT', 'sasagshnf,,f', '120', 'wheklwjl', 'hskjdhskdns', 'Approved', '1657002041', 'Jul,05,2022 08:20 AM'),
+(18, '62cd40a00d940', '62c3bfdf011a5', 'Topup', 'ETH', 'hdnsldsdbsndsdsd', '3000', 'sbdsbnbsmnd', 'sndjgsjtusvdjsd', 'Pending', '1657618592', 'Jul,12,2022 11:36 AM'),
+(19, '62cff16d408be', '62cd92a40b7a2', 'Deposit', 'USDT', 'sasagshnf,,fffff', '15000', 'sdmsdjs dd', 'gshdgsdhsd', 'Pending', '1657794925', 'Jul,14,2022 12:35 PM'),
+(20, '62cff26ac862b', '62cd92a40b7a2', 'Topup', 'BTC', 'fjwlkwebwebwqke', '2000', 'bdnsbdnbsd', 'hsdhbsd sd', 'Pending', '1657795178', 'Jul,14,2022 12:39 PM'),
+(21, '631b13861ed28', '62c3bfdf011a5', 'Deposit', 'ETH', 'hdnsldsdbsndsdsd', '15000', '631b13861df51ecampus3.PNG', 'mlkjdksdhskjdhsds', 'Pending', '1662718854', 'Sep,09,2022 12:20 PM'),
+(22, '631b1483e0ec9', '62c3bfdf011a5', 'Topup', 'BTC', 'fjwlkwebwebwqke', '500', '631b1483dfae0deriv1.jpg', 'jlkxjncbxncxcnxcx', 'Pending', '1662719107', 'Sep,09,2022 12:25 PM');
 
 -- --------------------------------------------------------
 
@@ -100,7 +104,8 @@ INSERT INTO `investments` (`id`, `investment_id`, `user_id`, `plan`, `status`, `
 (18, 'FIL_0F5DV6', '62c3bfdf011a5', 'Gold', 'Active', '1500', 'Jul,05,2022 11:49 AM'),
 (19, 'FIL_7N3Z2L', '62c3bfdf011a5', 'Platinum', 'Active', '5000', 'Jul,05,2022 12:02 PM'),
 (21, 'FIL_702NSG', '62c3bfdf011a5', 'Promo', 'Active', '2000', 'Jul,12,2022 11:58 AM'),
-(22, 'FIL_73XVE0', '62cd92a40b7a2', 'Gold', 'Active', '1000', 'Jul,14,2022 12:38 PM');
+(22, 'FIL_73XVE0', '62cd92a40b7a2', 'Gold', 'Active', '1000', 'Jul,14,2022 12:38 PM'),
+(23, 'FIL_H3L4O8', '62c3bfdf011a5', 'A1026', 'Active', '200', 'Sep,09,2022 01:05 PM');
 
 -- --------------------------------------------------------
 
@@ -256,7 +261,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `username`, `firstname`, `lastname`, `phone`, `email`, `country`, `password`, `image`, `wallet_address`, `status`, `available_balance`, `total_deposit`, `total_bonus`, `total_withdrawal`, `total_referral_bonus`, `pending_deposit`, `pending_withdrawal`, `referral_code`, `withdrawal_code`, `time`, `date`, `time_created`, `verification_status`, `last_login`) VALUES
-(9, '62c3bfdf011a5', 'john123', 'John', 'Doe', '+649023827383', 'john@gmail.com', 'empty', '1234', '62c6dec1242f5undraw_profile_1.svg', 'salkdsandsnad,nsa ds9', 'Active', '2200', '120', '0', '5300', '0', '50', '0', 'KJ1Q73', '1234', '1656995807', '05-07-22', 'Jul,05,2022 06:36 AM', 'Verified', 'Aug,31,2022 01:22 PM'),
+(9, '62c3bfdf011a5', 'john123', 'John', 'Doe', '+649023827383', 'john@gmail.com', 'empty', '1234', '62c6dec1242f5undraw_profile_1.svg', 'salkdsandsnad,nsa ds9', 'Active', '2000', '120', '0', '5300', '0', '15550', '0', 'KJ1Q73', '1234', '1656995807', '05-07-22', 'Jul,05,2022 06:36 AM', 'Verified', 'Sep,09,2022 01:47 PM'),
 (11, '62cd92a40b7a2', 'mary123', 'Mary', 'Lanes', '09012781782', 'mary@gmail.com', 'empty', '1234', 'default.svg', 'empty', 'Active', '1800', '0', '0', '0', '0', '17000', '1200', '28YAS1', '1234', '1657639588', '12-07-22', 'Jul,12,2022 05:26 PM', 'Not Verified', 'Jul,12,2022 05:26 PM'),
 (12, '630f494f87740', 'paul123', 'Paul', 'John', '0902812872', 'paul@gmail.com', 'empty', '1234', 'default.svg', 'empty', 'Active', '0', '0', '0', '0', '0', '0', '0', 'DC74G9', 'withdrawal_code', '1661946191', '31-08-22', 'Aug,31,2022 01:43 PM', 'Not Verified', 'Aug,31,2022 01:43 PM');
 
@@ -394,13 +399,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `deposits`
 --
 ALTER TABLE `deposits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `investments`
 --
 ALTER TABLE `investments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `notifications`

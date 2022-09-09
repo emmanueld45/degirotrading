@@ -112,9 +112,10 @@ if (isset($_POST['submit'])) {
                                         <br />
                                         <label for="">Select Plan</label>
                                         <select name="plan" id="" class="form-control plan">
-                                            <option value="Bronze">Bronze</option>
-                                            <option value="Silver">Silver</option>
-                                            <option value="Gold">Gold</option>
+                                            <option value="A1026">A1026</option>
+                                            <option value="A1066">A1066</option>
+                                            <option value="A1066 Pro">A1066 Pro</option>
+                                            <option value="A1166 Pro">A1166 Pro</option>
 
                                         </select>
                                         <br />
@@ -137,9 +138,12 @@ if (isset($_POST['submit'])) {
                                         <div>
                                             <ul>
                                                 <li style="margin-bottom:20px;">Duration: <b><span class="duration">0</span></b></li>
-                                                <li style="margin-bottom:20px;">Profit: <b><span class="profit">0</span></b></li>
+                                                <li style="margin-bottom:20px;">Daily Profit: <b><span class="daily-profit">0</span></b></li>
+                                                <li style="margin-bottom:20px;">Total Return: <b><span class="total-return">0</span></b></li>
                                                 <li style="margin-bottom:20px;">Min: <b>$<span class="min">0</span></b></li>
-                                                <li>Max: <b><span class="max">0<span class="time"></b></li>
+                                                <li style="margin-bottom:20px;">Max: <b><span class="max">0<span class="time"></b></li>
+                                                <li style="margin-bottom:20px;">Deposit Return: <b><span class="deposit-return">0</span></b></li>
+                                                <li style="margin-bottom:20px;">Capital Return: <b><span class="capital-return">0</span></b></li>
                                             </ul>
                                             <button class="btn btn-primary mb-3" style="width:100%;" name="submit">Start Investment</button>
                                         </div>
@@ -184,7 +188,7 @@ if (isset($_POST['submit'])) {
             <script src="js/demo/chart-pie-demo.js"></script>
 
             <script>
-                getPlanDetails("Bronze");
+                getPlanDetails("A1026");
                 $(".plan").change(function() {
                     var plan = $(this).val();
                     getPlanDetails(plan);
@@ -204,9 +208,12 @@ if (isset($_POST['submit'])) {
                         type: 'POST',
                         success: function(resp) {
                             var resp = JSON.parse(resp)
-                            console.log("resp: " + resp)
+                            // console.log("resp: " + resp.daily_profit)
                             $(".duration").html(resp.duration)
-                            $(".profit").html(resp.profit)
+                            $(".daily-profit").html(resp.daily_profit)
+                            $(".total-return").html(resp.total_return)
+                            $(".deposit-return").html(resp.deposit_return)
+                            $(".capital-return").html(resp.capital_return)
                             $(".min").html(resp.min)
                             if (resp.max == "Unlimited") {
                                 $(".max").html(resp.max)

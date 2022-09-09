@@ -26,6 +26,7 @@ if (isset($_GET['edit_account'])) {
     $user->setDetail($user_id, "lastname", $_GET['lastname']);
     $user->setDetail($user_id, "phone", $_GET['phone']);
     $user->setDetail($user_id, "email", $_GET['email']);
+    $user->setDetail($user_id, "country", $_GET['country']);
     $user->setDetail($user_id, "username", $_GET['username']);
     $user->setDetail($user_id, "password", $_GET['password']);
 
@@ -174,6 +175,12 @@ if (isset($_GET['login_as_user'])) {
                                     <b>Email:</b><br />
                                     <span><?php echo $user->getDetail($user_id, "email"); ?></span>
                                     <hr />
+                                    <b>Phone:</b><br />
+                                    <span><?php echo $user->getDetail($user_id, "phone"); ?></span>
+                                    <hr />
+                                    <b>Country:</b><br />
+                                    <span><?php echo $user->getDetail($user_id, "country"); ?></span>
+                                    <hr />
                                     <b>Registered on:</b><br />
                                     <span><?php echo $user->getDetail($user_id, "time_created"); ?></span>
                                     <hr />
@@ -275,8 +282,13 @@ if (isset($_GET['login_as_user'])) {
                                         <label for="">Email</label>
                                         <input type="text" name="email" value="<?php echo $user->getDetail($user_id, "email"); ?>" class="form-control mb-2" required>
 
+
                                         <label for="">Phone</label>
                                         <input type="text" name="phone" value="<?php echo $user->getDetail($user_id, "phone"); ?>" class="form-control mb-2" required>
+
+                                        <label for="">Country</label>
+                                        <input type="text" name="country" value="<?php echo $user->getDetail($user_id, "country"); ?>" class="form-control mb-2" required>
+
 
                                         <label for="">Password</label>
                                         <input type="text" name="password" value="<?php echo $user->getDetail($user_id, "password"); ?>" class="form-control mb-2" required>
@@ -336,7 +348,9 @@ if (isset($_GET['login_as_user'])) {
                                         <th>User</th>
 
                                         <th>Method</th>
-                                        <th>Wallet</th>
+                                        <th>To</th>
+                                        <th>From</th>
+                                        <th>Transaction Slip</th>
                                         <th>Status</th>
                                         <th>Time Created</th>
                                         <th>Action</th>
@@ -349,7 +363,9 @@ if (isset($_GET['login_as_user'])) {
                                         <th>User</th>
 
                                         <th>Method</th>
-                                        <th>Wallet</th>
+                                        <th>To</th>
+                                        <th>From</th>
+                                        <th>Transaction Slip</th>
                                         <th>Status</th>
                                         <th>Time Created</th>
                                         <th>Action</th>
@@ -375,6 +391,9 @@ if (isset($_GET['login_as_user'])) {
 
                                                 <td><?php echo $row['coin_type']; ?></td>
                                                 <td><?php echo $row['wallet_address']; ?></td>
+                                                <td><?php echo $row['from_wallet_address']; ?></td>
+                                                <td><a href="<?php echo $row['transaction_slip']; ?>">View</a></td>
+
                                                 <td><?php echo $row['status']; ?></td>
                                                 <td><?php echo $row['time_created']; ?></td>
                                                 <td>

@@ -28,7 +28,7 @@ class User
         return  $final_result;
     }
 
-    public function createUser($user_id, $username, $firstname, $lastname, $email, $phone, $country, $wallet_address, $password)
+    public function createUser($user_id, $username, $firstname, $lastname, $email, $phone, $country, $wallet_address, $password, $withdrawal_code)
     {
         global $db;
         $status = "Active";
@@ -47,7 +47,7 @@ class User
         $total_referral_bonus = 0;
         $pending_deposit = 0;
         $pending_withdrawal = 0;
-        $withdrawal_code = "withdrawal_code";
+        // $withdrawal_code = "withdrawal_code";
         $verification_status = "Not Verified";
         $image = "default.svg";
 
@@ -352,7 +352,7 @@ class User
 
 
 
-    public function addDeposit($deposit_id, $user_id, $deposit_type, $amount, $coin_type, $wallet_address)
+    public function addDeposit($deposit_id, $user_id, $deposit_type, $amount, $coin_type, $wallet_address, $transaction_slip, $from_wallet_address)
     {
         global $db;
 
@@ -360,7 +360,7 @@ class User
         $status = "Pending";
         $time = time();
         $time_created = date("M,d,Y h:i A");
-        $result = $db->setQuery("INSERT INTO deposits (deposit_id, user_id, deposit_type, coin_type, wallet_address, usd_amount, status, time, time_created) VALUES ('$deposit_id', '$user_id', '$deposit_type', '$coin_type', '$wallet_address', '$amount', '$status', '$time', '$time_created');");
+        $result = $db->setQuery("INSERT INTO deposits (deposit_id, user_id, deposit_type, coin_type, wallet_address, usd_amount, transaction_slip, from_wallet_address, status, time, time_created) VALUES ('$deposit_id', '$user_id', '$deposit_type', '$coin_type', '$wallet_address', '$amount', '$transaction_slip', '$from_wallet_address', '$status', '$time', '$time_created');");
         if ($result) {
             return $deposit_id;
         } else {
@@ -465,6 +465,36 @@ class User
         } else {
             return false;
         }
+    }
+
+    public function formatWhatsappPhone($phone)
+    {
+        $new_phone = $phone;
+        $phone_array = explode("+", $new_phone);
+        $new_phone = "";
+        foreach ($phone_array as $phone) {
+            $new_phone .= $phone;
+        }
+
+        $phone_array = explode("(", $new_phone);
+        $new_phone = "";
+        foreach ($phone_array as $phone) {
+            $new_phone .= $phone;
+        }
+
+        $phone_array = explode(")", $new_phone);
+        $new_phone = "";
+        foreach ($phone_array as $phone) {
+            $new_phone .= $phone;
+        }
+
+        $phone_array = explode(" ", $new_phone);
+        $new_phone = "";
+        foreach ($phone_array as $phone) {
+            $new_phone .= $phone;
+        }
+
+        return $new_phone;
     }
 }
 

@@ -1,6 +1,11 @@
 <?php
 include 'classes/database.class.php';
 include 'classes/admin.class.php';
+
+if (isset($_GET['logged_out'])) {
+  setcookie("auto_login", "hi", time() - 2592000);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,8 +128,13 @@ include 'classes/admin.class.php';
           <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <h3>We are here to manage your finance with experience.</h3>
             <p class="fst-italic">
-              We built an AI trading system that truly works that is more efficient, profitable, smarter, and
-              has recorded higher wining rate that disrupts the industry.
+              DEGIRO is a German-Dutch online discount broker. It was established in 2008 by former employees
+              of another broker company in the Netherlands.
+
+              DEGIRO merged with flatexDEGIRO Bank AG in early 2021, creating the biggest online execution-only
+              broker in Europe with its own banking license.
+              <!-- We built an AI trading system that truly works that is more efficient, profitable, smarter, and
+              has recorded higher wining rate that disrupts the industry. -->
             </p>
             <ul>
               <li>
@@ -690,6 +700,7 @@ include 'classes/admin.class.php';
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+  <script src="assets/js/jquery.min.js"></script>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>

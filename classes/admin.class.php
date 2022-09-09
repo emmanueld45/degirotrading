@@ -215,6 +215,36 @@ class Admin
 
         return $total;
     }
+
+    public function formatWhatsappPhone($phone)
+    {
+        $new_phone = $phone;
+        $phone_array = explode("+", $new_phone);
+        $new_phone = "";
+        foreach ($phone_array as $phone) {
+            $new_phone .= $phone;
+        }
+
+        $phone_array = explode("(", $new_phone);
+        $new_phone = "";
+        foreach ($phone_array as $phone) {
+            $new_phone .= $phone;
+        }
+
+        $phone_array = explode(")", $new_phone);
+        $new_phone = "";
+        foreach ($phone_array as $phone) {
+            $new_phone .= $phone;
+        }
+
+        $phone_array = explode(" ", $new_phone);
+        $new_phone = "";
+        foreach ($phone_array as $phone) {
+            $new_phone .= $phone;
+        }
+
+        return $new_phone;
+    }
 }
 
 

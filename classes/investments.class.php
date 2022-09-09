@@ -38,26 +38,26 @@ class Investments
 
     public function amountAndPlanIsValid($amount, $plan)
     {
-        if ($plan == "Gold") {
-            if ($amount >= 1000 && $amount <= 4999) {
+        if ($plan == "A1026") {
+            if ($amount >= 200 && $amount <= 3999) {
                 return true;
             } else {
                 return false;
             }
-        } else if ($plan == "Platinum") {
-            if ($amount >= 5000 && $amount <= 9999) {
+        } else if ($plan == "A1066") {
+            if ($amount >= 4000 && $amount <= 5999) {
                 return true;
             } else {
                 return false;
             }
-        } else if ($plan == "Diamond") {
-            if ($amount >= 10000 && $amount <= 25000) {
+        } else if ($plan == "A1066 Pro") {
+            if ($amount >= 6000 && $amount <= 15999) {
                 return true;
             } else {
                 return false;
             }
-        } else if ($plan == "Block") {
-            if ($amount >= 25000) {
+        } else if ($plan == "A1166 Pro") {
+            if ($amount >= 16000 && $amount <= 25000) {
                 return true;
             } else {
                 return false;
@@ -67,32 +67,52 @@ class Investments
 
     public function getPlanDisplayDetails($plan)
     {
-        if ($plan == "Bronze") {
+        if ($plan == "A1026") {
             $details = array(
-                'min' => 100,
-                'max' => 4999,
-                'duration' => '5 Days',
-                'profit' => '2.8%'
+                'min' => 200,
+                'max' => 3999,
+                'deposit_return' => 'Yes',
+                'duration' => '7 Days',
+                'daily_profit' => '2%',
+                'total_return' => '14%',
+                'capital_return' => 'Yes (End of Contract)'
             );
 
             return $details;
-        } else if ($plan == "Silver") {
+        } else if ($plan == "A1066") {
             $details = array(
-                'min' => 5000,
-                'max' => 14999,
-                'duration' => '5 Days',
-                'profit' => '3.5%'
+                'min' => 4000,
+                'max' => 5999,
+                'deposit_return' => 'Yes',
+                'duration' => '7 Days',
+                'daily_profit' => '3%',
+                'total_return' => '21%',
+                'capital_return' => 'Yes (End of Contract)'
             );
             return $details;
-        } else if ($plan == "Gold") {
+        } else if ($plan == "A1066 Pro") {
             $details = array(
-                'min' => 15000,
-                'max' => 'Unlimited',
-                'duration' => '5 Days',
-                'profit' => '4%'
+                'min' => 6000,
+                'max' => 15999,
+                'deposit_return' => 'Yes',
+                'duration' => '7 Days',
+                'daily_profit' => '3.8%',
+                'total_return' => '26.6%',
+                'capital_return' => 'Yes (End of Contract)'
             );
             return $details;
-        } 
+        } else if ($plan == "A1166 Pro") {
+            $details = array(
+                'min' => 16000,
+                'max' => 25000,
+                'deposit_return' => 'Yes',
+                'duration' => '7 Days',
+                'daily_profit' => '4%',
+                'total_return' => '28%',
+                'capital_Return' => 'Yes (End of Contract)'
+            );
+            return $details;
+        }
     }
 
 

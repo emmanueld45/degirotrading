@@ -5,6 +5,12 @@ include 'classes/database.class.php';
 include 'classes/admin.class.php';
 include 'classes/users.class.php';
 
+if (isset($_COOKIE['auto_login'])) {
+    $_SESSION['user_id'] = $_COOKIE['auto_login'];
+    $admin->goTo("dashboard", "auto_loggin");
+}
+
+
 
 if (isset($_POST['login'])) {
     $username = mysqli_real_escape_string($db->conn, $_POST['username']);
@@ -17,6 +23,9 @@ if (isset($_POST['login'])) {
         $row = mysqli_fetch_assoc($result);
         if ($password == $row['password']) {
             $_SESSION['user_id'] = $row['user_id'];
+            if (isset($_POST['remember_me'])) {
+                setcookie("auto_login", $row['user_id'], time() + 2592000);
+            }
             $last_login = date("M,d,Y h:i A");
             $user->setDetail($_SESSION['user_id'], "last_login", $last_login);
 
@@ -85,6 +94,7 @@ if (isset($_POST['login'])) {
                 <div class="submit-btn-container">
                     <button class="submit-btn" name="login">Login</button>
                 </div>
+                <input type="checkbox" style="margin-top:10px;margin-bottom:10px;" name="remember_me" id=""> Remember me?
                 <div class="info">Don't have an account? <a href="signup" class="info-link">Signup</a></div>
                 <div class="info">Forgotten your password? <a href="forgot-password" class="info-link">Click here</a></div>
             </form>

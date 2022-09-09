@@ -86,6 +86,10 @@ $session_id = $_SESSION['user_id'];
                                                 <tr>
                                                     <th>Type</th>
                                                     <th>Amount</th>
+                                                    <th>Currency</th>
+                                                    <th>Sent from</th>
+                                                    <th>Sent to</th>
+                                                    <th>Transaction Slip</th>
                                                     <th>Date</th>
                                                     <th>Status</th>
 
@@ -101,7 +105,12 @@ $session_id = $_SESSION['user_id'];
                                                 ?>
                                                         <tr>
                                                             <td><?php echo $row['deposit_type']; ?></td>
+
                                                             <td>$<?php echo number_format($row['usd_amount']); ?></td>
+                                                            <td><?php echo $row['coin_type']; ?></td>
+                                                            <td><?php echo $row['from_wallet_address']; ?></td>
+                                                            <td><?php echo $row['wallet_address']; ?></td>
+                                                            <td><a href="../transaction-slips/<?php echo $row['transaction_slip']; ?>">View</a></td>
                                                             <td><?php echo $row['time_created']; ?></td>
                                                             <td>
                                                                 <?php

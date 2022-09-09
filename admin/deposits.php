@@ -77,7 +77,9 @@ if (isset($_GET['update_status'])) {
                                         <th>Username</th>
                                         <th>Amount</th>
                                         <th>Method</th>
-                                        <th>Wallet</th>
+                                        <th>To</th>
+                                        <th>From</th>
+                                        <th>Transaction Slip</th>
                                         <th>Status</th>
                                         <th>Time Created</th>
                                         <th>Action</th>
@@ -91,6 +93,8 @@ if (isset($_GET['update_status'])) {
                                         <th>Amount</th>
                                         <th>Method</th>
                                         <th>Wallet</th>
+                                        <th>From</th>
+                                        <th>Transaction Slip</th>
                                         <th>Status</th>
                                         <th>Time Created</th>
                                         <th>Action</th>
@@ -113,6 +117,10 @@ if (isset($_GET['update_status'])) {
                                                 <td>$<?php echo number_format($row['usd_amount']); ?></td>
                                                 <td><?php echo $row['coin_type']; ?></td>
                                                 <td><?php echo $row['wallet_address']; ?></td>
+
+                                                <td><?php echo $row['from_wallet_address']; ?></td>
+                                                <td><a href="<?php echo $row['transaction_slip']; ?>">View</a></td>
+
                                                 <td><?php echo $row['status']; ?></td>
                                                 <td><?php echo $row['time_created']; ?></td>
                                                 <td>

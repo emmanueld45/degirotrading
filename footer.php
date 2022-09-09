@@ -21,8 +21,8 @@
                   <div class="col-lg-3 col-md-6 footer-contact">
                       <h3>degirotrading<span>.</span></h3>
                       <p>
-                          Boston, Massachusetts, <br>
-                          United States <br><br>
+                          Amstelplein 1, floor #9, 1096 HA, <br>
+                          Netherlands <br><br>
 
                       </p>
                   </div>

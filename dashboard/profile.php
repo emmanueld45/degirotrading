@@ -138,7 +138,7 @@ if (isset($_POST['update_photo'])) {
                                         }
                                         ?>
                                         <p style="color:#4e73df;"><b>Name:</b> <?php echo $user->getDetail($session_id, "firstname") . " " . $user->getDetail($session_id, "lastname"); ?></p>
-                                        <!-- <p style="color:#4e73df;"><b>Wallet: <?php echo $user->getDetail($session_id, "wallet_address") ?></b> </p> -->
+                                        <p style="color:#4e73df;"><b>Country:</b> <?php echo $user->getDetail($session_id, "country") ?> </p>
                                         <p style="color:#4e73df;"><b>Email:</b> <?php echo $user->getDetail($session_id, "email") ?></p>
                                         <p style="color:#4e73df;"><b>Status:</b> <?php echo $user->getDetail($session_id, "verification_status") ?></p>
 
